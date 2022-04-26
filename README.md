@@ -1,1 +1,1 @@
-# InteropEHRate Pseudoidentity Generation Service
+# InteropEHRate Pseudo-identity Generation Service
