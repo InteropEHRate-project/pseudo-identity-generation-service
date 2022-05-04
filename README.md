@@ -1,4 +1,4 @@
-# Pseudo-Identity Generation Service
+# InteropEHRate Pseudo-Identity Generation Service
 
 ## Description
 
