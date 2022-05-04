@@ -1,0 +1,31 @@
+version: '3'
+services:
+  database-mysql:
+    image: mysql:latest
+    networks:
+      - network-mysql
+    container_name: pseudoid-generator-database
+    environment:
+      MYSQL_ROOT_PASSWORD: interopehrate
+    ports:
+      - 3306:3306
+  pseudoid-generator-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pseudoid-generator
+    container_name: pseudoid-generator-service
+    restart: on-failure
+    ports:
+      - 8080:8080
+    networks:
+      - network-mysql
+    depends_on:
+      - database-mysql
+
+networks:
+  network-mysql:
+    driver: bridge
+
+
+

@@ -1,0 +1,15 @@
+=========================================================================
+==  Apache License, Version 2.0,                                       ==
+==  InteropEHRate Pseudo-identity Generation Service                   ==
+=========================================================================
+
+InteropEHRate Pseudo-identity Generation Service
+Copyright 2021 BYTE, S.A.
+
+This product includes software developed for 
+The InteropEHRate project (https://interopehrate.eu/).
+
+Portions of this software were developed by BYTE S.A. from Greece.
+
+This software contains code derived from Spring Boot and JDBC, 
+including various modifications by BYTE S.A.
