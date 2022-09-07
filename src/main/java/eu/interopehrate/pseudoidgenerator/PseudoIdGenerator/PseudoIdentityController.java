@@ -1,25 +1,31 @@
 package eu.interopehrate.pseudoidgenerator.PseudoIdGenerator;
 
 import org.json.JSONObject;
-import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
-@Controller
-@RequestMapping(path="/pseudo_identity")
+@RestController
+@Validated
 public class PseudoIdentityController {
 
-    @GetMapping("")
+    @GetMapping("/pseudo_identity")
     @ResponseBody
-    public String generatePseudoIdentity(@RequestParam String prefix) throws SQLException {
+    public String generatePseudoIdentity(@Valid @RequestParam("prefix") String prefix) throws SQLException {
 
         String message;
         int status;
         String response;
 
         if(prefix == null || prefix.equals("")) {
-            message = "Error: At least one parameter is invalid or not provided.";
+            message = "Prefix parameter should be provided.";
+            status = 400;
+            response = generateResponse("", "", message, status);
+        } else if(!Pattern.matches("^[A-Za-z0-9_-]+$", prefix)) {
+            message = "Prefix should contain only letters, numbers, underscores and dashes [a-z, A-Z, 0-9, _, -].";
             status = 400;
             response = generateResponse("", "", message, status);
         } else {
@@ -30,7 +36,6 @@ public class PseudoIdentityController {
             status = 200;
             response = generateResponse(prefix, pseudo_identity, message, status);
         }
-
         return response;
     }
 

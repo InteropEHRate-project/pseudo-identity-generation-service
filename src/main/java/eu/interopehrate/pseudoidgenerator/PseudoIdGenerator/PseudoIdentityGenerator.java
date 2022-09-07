@@ -12,8 +12,6 @@ public class PseudoIdentityGenerator {
 
     public static String generatePseudoIdentity(String prefix) throws SQLException {
 
-
-
         DatabaseHandler databaseHandler = new DatabaseHandler();
         int incremental_number = databaseHandler.getIncrementalNumber(prefix);
         String input = prefix + incremental_number;
